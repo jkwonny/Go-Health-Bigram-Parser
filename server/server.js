@@ -13,15 +13,16 @@ const bigramController = require('./controller')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//basic request to main page
+//basic request to main page serving build as static
 app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../src/index.html'));
 })
 
 
-app.post('/bigram', bigramController.readFile, (req, res) => {
-    res.status(200).json({ text: res.locals.text })
+//one endpoint to run through middleware
+app.post('/bigram', bigramController.readFile, bigramController.parse, (req, res) => {
+    res.status(200).json({ histogram: res.locals.histogram })
 })
 
 

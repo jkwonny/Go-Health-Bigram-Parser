@@ -6,12 +6,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: {},
+      histogram: {},
       uploaded: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //post request sending filename and receiving histogram
   async handleSubmit () {
     event.preventDefault();
     let browser_file_path = document.getElementById("myfileid").value;
@@ -29,7 +30,7 @@ class App extends Component {
     try {
       const fetchResponse = await fetch('/bigram', settings);
       const data = await fetchResponse.json();
-      console.log('this is data', data)
+      this.setState({ histogram: data.histogram })
       this.setState({ uploaded: true })
       return data;
     } catch(e) {
@@ -39,10 +40,13 @@ class App extends Component {
 
 
   render (){
-    let histogram;
+    let finalHistogram = [];
     if (this.state.uploaded === true) {
-      histogram = (<div>Hello</div>)
+      for (let [key, value] of Object.entries(this.state.histogram)) {
+        finalHistogram.push(<ul>{`"${key}"`} {value}</ul>)
+      }
     }
+
   return (
     <div className="Bigram Parser">
       <header className="Bigram Parser">
@@ -50,16 +54,13 @@ class App extends Component {
           <h1>Welcome GoHealth</h1>
           <p>Please import the desired file you'd like to test</p>
           <div className="upload-btn-wrapper">
-            <button className="upload-btn">
-              Import
-            </button>
             <form onSubmit={this.handleSubmit}>
             <input type="file" id="myfileid" name="myfile" accept=".txt, .doc, .docx, .pdf"/>
             <input type="submit" value="Submit"></input>
             </form>
           </div>
           <div>
-            {histogram}
+            {finalHistogram}
           </div>
         </div>
       </header>
