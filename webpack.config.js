@@ -8,7 +8,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    // contentBase: "./build/", //comment out for when developing
+    //comment out for when developing
+    contentBase: "./build/", 
     contentBase: './src/',
     open: true,
     port: 3000,

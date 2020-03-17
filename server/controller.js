@@ -12,13 +12,14 @@ bigramcontroller.readFile = (req, res, next) => {
 }
 
 //function that parses/builds histogram
-bigramcontroller.parse = (req,res, next) => {
+bigramcontroller.parse = (req, res, next) => {
     const histogram = {};
     let newTextArray = res.locals.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
     newTextArray = newTextArray.split(/\s+/);
 
-    if (newTextArray <= 1) {
-        return 'No bigrams in the text.';
+    if (newTextArray.length <= 1) {
+        res.locals.histogram = {None: 'No bigrams in the text.'}
+        return next();
     }
     for (let i = 0; i < newTextArray.length; i++) {
         if (i+1 <= newTextArray.length-1) {
@@ -28,9 +29,11 @@ bigramcontroller.parse = (req,res, next) => {
             } else {
                 histogram[key] = 1;
             }
-    }
+        }
+        res.locals.histogram = histogram;
 }
-    res.locals.histogram = histogram;
+    //incase the textfile is way too long and webpage div runs out of space, terminal will show the entire histogram
+    console.log(histogram)
     return next();
 }
 

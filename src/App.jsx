@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Particles from 'react-particles-js';
 import style from './index.css';
 import path from 'path';
 
@@ -48,22 +49,51 @@ class App extends Component {
     }
 
   return (
-    <div className="Bigram Parser">
-      <header className="Bigram Parser">
-        <div>
-          <h1>Welcome GoHealth</h1>
-          <p>Please import the desired file you'd like to test</p>
-          <div className="upload-btn-wrapper">
-            <form onSubmit={this.handleSubmit}>
-            <input type="file" id="myfileid" name="myfile" accept=".txt, .doc, .docx, .pdf"/>
-            <input type="submit" value="Submit"></input>
-            </form>
-          </div>
-          <div>
-            {finalHistogram}
-          </div>
+    <div className="fullscreen">
+        <div className="decor">
+          <Particles
+            params={{
+              particles: {
+                line_linked: {
+                  enable: true,
+                  distance: 150,
+                  color: "#74e1da",
+                  opacity: 0.7,
+                  width: 1
+                },
+                number: {
+                  value: 100
+                },
+                size: {
+                  value: 1
+                }
+              },
+              interactivity: {
+                events: {
+                  onhover: {
+                    enable: true,
+                    mode: 'repulse'
+                  }
+                }
+              }
+            }}
+          />
         </div>
-      </header>
+        <header className="bigramParser">
+          <h1 className="welcomeText">Welcome GoHealth</h1>
+          <div className="uploadContainer">
+            <p className="instructionText">Please import the desired file you'd like to test</p>
+            <div className="upload-btn-wrapper">
+              <form className="formcontainer" onSubmit={this.handleSubmit}>
+                <input type="file" id="myfileid" name="myfile" accept=".txt, .doc, .docx, .pdf"/>
+                <input className="submitButton" type="submit" value="Submit"></input>
+              </form>
+            </div>
+          </div>
+        </header>
+        <div className="histogram">
+          {finalHistogram}
+        </div>
     </div>
   );
 }
