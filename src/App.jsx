@@ -3,7 +3,7 @@ import Particles from 'react-particles-js';
 import style from './index.css';
 import path from 'path';
 
-export class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,8 @@ export class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //post request sending filename and receiving histogram
+  //post request sending filename and receiving histogram data
+  //change state to conditionally render histogram
   async handleSubmit () {
     event.preventDefault();
     let browser_file_path = document.getElementById("myfileid").value;

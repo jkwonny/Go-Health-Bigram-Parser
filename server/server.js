@@ -25,6 +25,9 @@ app.post('/bigram', bigramController.readFile, bigramController.parse, (req, res
     res.status(200).json({ histogram: res.locals.histogram })
 })
 
+// catch-all route handler for any requests to an unknown route
+app.use('*', (req, res) => res.sendStatus(404));
+
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}...`));
 

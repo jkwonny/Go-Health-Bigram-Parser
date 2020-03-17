@@ -69,20 +69,6 @@
   grid-template-rows: 50% 50%;
 }
 
-/* .fileButton{
-  cursor: pointer;
-  width: 99.5;
-  height: 90%;
-  grid-row: 1;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  border: 1px solid black;
-  background: white;
-  border-radius: .25em;
-  line-height: 3.5;
-  padding: 1px 7px 2px;
-} */
-
 #myfileid {
   margin-top: 19px;
   margin-right: -5px;
