@@ -1,10 +1,10 @@
-### Hello GoHealth!
+## Hello GoHealth!
 
 This fullstack application (a little overboard I know) is a basic implementation of a bigram parser that takes a text file as an input and outputs a histogram of the frequencies of each bigram onto the page. If the text file contains too many strings and doesn't show all of the bigrams on the webpage, it is also listed in the terminal.
 
-###### To run this project:
+##### To run this project:
 ```
-please first npm install -> npm run build (just to be safe) -> npm run dev
+please first npm install -> npm run build (just to be safe) -> npm run dev -> add text file to testtext folder
 ```
 
 At http://localhost:8080/, you will see the user interface show up - select any text file (.txt, .doc, .docx) to test for bigrams.
