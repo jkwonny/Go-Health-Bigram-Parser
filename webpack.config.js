@@ -8,11 +8,10 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    //comment out for when developing
     contentBase: "./build/", 
-    contentBase: './src/',
+    // contentBase: './src/',
     open: true,
-    port: 3000,
+    port: 8080,
     overlay: true
   },
   module: {
