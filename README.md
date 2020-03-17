@@ -4,7 +4,7 @@ This fullstack application (a little overboard I know) is a basic implementation
 
 ##### To run this project:
 ```
-please first npm install -> npm run build (just to be safe) -> npm run dev -> add text file to testtext folder
+npm install -> npm run build (just to be safe) -> npm run dev -> add text file to testtext folder
 ```
 
 At http://localhost:8080/, you will see the user interface show up - select any text file (.txt, .doc, .docx) to test for bigrams.
